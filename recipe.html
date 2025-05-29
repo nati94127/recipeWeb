@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/51e7ac3f14.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Recipe Detail</title>
+    <link rel="stylesheet" href="ditail-page.css" />
+  </head>
+  <body>
+    <div class="Nav">
+      <button onclick="history.back()" class="returnbtn">
+        <i class="fa-solid fa-arrow-left"></i>Back
+      </button>
+      <p class="savedbtn">
+        <span><i class="fa-solid fa-bookmark"></i></span>Saved
+      </p>
+    </div>
+    <div class="recipe-detail"></div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const container = document.querySelector(".recipe-detail");
+
+      async function fetchRecipeDetail(recipeID) {
+        try {
+          const res = await fetch(
+            `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=90595c14151441ff92d3a0111e83abcb`
+          );
+          const data = await res.json();
+
+          container.innerHTML = `
+          <section> 
+           <dishtype> ${data.dishTypes}</dishtype>
+             <img src="${data.image}"/>
+           </section>
+         <div>
+          
+ <h2>${data.title}</h2> 
+          <container> <p><span>Ready in:</span> ${data.readyInMinutes}</p>
+          <p><span>Health Score:</span> ${data.healthScore}</p>
+                    <p><span>Diets:</span> ${data.diets}</p>
+          <p><span>Servings:</span> ${data.servings}</p></container>
+          <container>
+            <section>
+          <h3>Ingredients:</h3>
+          <ul>
+            ${data.extendedIngredients
+              .map((ing) => `<li>${ing.original}</li>`)
+              .join("")}
+            </ul>
+            </section>
+            <section>
+            <h3>Instructions:</h3>
+            <p>${data.instructions || "No Instruction found"}</p>
+              </section>
+            </container>
+            <h3>Summary</h3><summary> ${data.summary}</summary>
+            </div>
+         
+          `;
+        } catch (err) {
+          container.innerHTML = `<p> Faild to load recipe</p>`;
+          console.error(err);
+        }
+      }
+      if (id) fetchRecipeDetail(id);
+    </script>
+  </body>
+</html>

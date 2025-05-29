@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/51e7ac3f14.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>RecipeApp</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+  <div class="navbar-section">
+    <div class="prim-section">
+  <p>Logo</p>
+
+  <!-- Hamburger icon (only visible on mobile via CSS) -->
+  <button class="menu-toggle" aria-label="Toggle menu">
+   <i class="fa-solid fa-bars"></i>
+  </button>
+</div>
+  <!-- Nav menu to be shown/hidden -->
+  <div class="nav-items">
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Recipe</a></li>
+      </ul>
+    </nav>
+    <div class="searchbar">
+      <input type="text" placeholder="Search Recipes" class="SearchBox" />
+      <span class="SearchBtn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </span>
+    </div>
+    <div class="fave">
+      <a href="saved.html">
+        <span><i class="fa-solid fa-bookmark"></i></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+      <div class="hero-section">
+        <div class="above">
+          <span><i class="fa-solid fa-bowl-food"></i></span>Made for food lovers
+        </div>
+        <h1>Cook Like a Pro — Even if You Burned Toast Yesterday</h1>
+        <p>
+          Search thousands of easy-to-follow recipes — from comfort food to
+          fancy feasts.
+        </p>
+
+        <div class="button">
+         
+          <button  class="pbtn bt1"> <a href="search.html">
+            <span><i class="fa-solid fa-magnifying-glass"></i></span>Search
+            Recipes
+        </a> </button> 
+          <!-- <button class="pbtn bt2">
+            <span><i class="fa-solid fa-dice"></i></span>Surprise Me!
+          </button> -->
+          <button class="pbtn bt3">
+<a href="#catagory"><span><i class="fa-solid fa-utensils"></i></span>Browse Categories
+          </button></a>
+        </div>
+      </div>
+      <div class="body-content">
+
+        <div id="catagory" class="tabs">
+          <div class="tab-list">
+            <ul id="tabs">
+              <li class="active-tab" data-type="breakfast">Breakfast</li>
+              <li data-type="lunch">Lunch</li>
+              <li data-type="dinner">Dinner</li>
+              <li data-type="snack">Snack</li>
+              <li data-type="dessert">Dessert</li>
+              <li data-type="appetizer">Appetizer</li>
+              <li data-type="drink">Drinks</li>
+            </ul>
+          </div>
+          <div class="tabs-content"></div>
+        </div>
+                <div class="content1">
+          <h1>Why Cook With Us?</h1>
+          <div class="flex-box">
+            <div class="box">
+             <div> <i class="fa-regular fa-compass"></i>
+              <h3>Simple, Step-by-Step Guides</h3></div>
+              <p>Even if you're a total beginner, you're good here.</p>
+            </div>
+            <div class="box">
+              <div><i class="fa-regular fa-bookmark"></i>
+              <h3>Save Your Favorites</h3></div>
+              <p>Build your own cookbook (coming soon!).</p>
+            </div>
+            <div class="box">
+              <div><i class="fa-solid fa-bolt"></i>
+              <h3>Fast & <br> Responsive</h3></div>
+              <p>Works great on desktop and mobile.</p>
+            </div>
+          </div>
+        </div>
+        <div class="content2">
+          <h2>Trending Recipes</h2>
+          <p>Loved by the community and perfect for any skill level.</p>
+          <button class="pbtn bt2">
+            <span><i class="fa-solid fa-carrot"></i></span>View All Recipes
+          </button>
+          <div class="recipecollection"></div>
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/51e7ac3f14.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Saved</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .header{
+        font-size: 3em;
+        padding-top: 2em;
+        font-family: "DynaPuff", system-ui;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+            <div class="navbar-section">
+        <p>Logo</p>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="search.html">Recipe</a></li>
+          </ul>
+        </nav>
+        <div class="fave">
+          <a href="saved.html">
+            <span><i class="fa-solid fa-bookmark"></i></span
+          ></a>
+        </div>
+      </div>
+    <div class="body-content">
+      <div class="header">
+        <h2>Your Saved Recipes.</h2>
+      </div>
+      <div class="tabs-content"></div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      function loadSavedRecipes() {
+        const saved = JSON.parse(localStorage.getItem("savedRecipes")) || [];
+        const container = document.querySelector(".tabs-content");
+        container.innerHTML = "";
+
+        saved.forEach((recipe) => {
+          const card = document.createElement("div");
+          card.classList.add("recipes");
+          card.setAttribute("data-id", recipe.id);
+
+          card.innerHTML = `
+      <img src="${recipe.image}">
+      <div>
+        <span>
+          <h3>${truncateText(recipe.title,10)}</h3> <p><i class="fa-regular fa-clock"></i> ${recipe.readyInMinutes} min</p>
+          </span>
+        
+        <section></section>
+      </div>
+    `;
+
+          const viewBtn = document.createElement("button");
+          viewBtn.classList.add("btn");
+          viewBtn.innerHTML = `<p><i class="fa-solid fa-utensils"></i> View Detail </p>`;
+          viewBtn.addEventListener("click", () => {
+            window.location.href = `recipe.html?id=${recipe.id}`;
+          });
+
+          const removeBtn = document.createElement("button");
+          removeBtn.classList.add("removebtn")
+          removeBtn.innerHTML = `<p><span> <i class="fa-solid fa-bookmark"></i></span>  Saved</p>`;
+          removeBtn.addEventListener("click", () => {
+            removeRecipe(recipe.id);
+            card.remove(); // immediate visual feedback
+          });
+
+          const section = card.querySelector("section");
+          section.appendChild(viewBtn);
+          section.appendChild(removeBtn);
+
+          container.appendChild(card);
+        });
+      }
+
+      window.addEventListener("DOMContentLoaded", loadSavedRecipes);
+      window.addEventListener("storage", loadSavedRecipes);
+    </script>
+  </body>
+</html>
