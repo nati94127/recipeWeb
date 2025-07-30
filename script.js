@@ -41,7 +41,7 @@ const fetchRecipe = async (query, targetSelector) => {
     const recipeDiv = document.createElement("div");
     recipeDiv.classList.add("recipes");
     recipeDiv.innerHTML = `
-      <img src="${result.image}">
+    <part><img src="${result.image}"></part>
       <div>
       <span>
       <h3>${truncateText(result.title, 30)} </h3>
